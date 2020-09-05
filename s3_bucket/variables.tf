@@ -6,7 +6,7 @@ variable "bucket_prefix" {
 
 variable "acl" {
     type        = string
-    description = "(Optional) The canned ACL to apply. Defaults to "private". Conflicts with grant."
+    description = "(Optional) The canned ACL to apply. Defaults to private. Conflicts with grant."
     default     = "private"
 }
 
@@ -23,7 +23,7 @@ variable "target_bucket" {
 }
 
 variable "target_prefix" {
-    type        = bool
+    type        = string
     description = "(Optional) To specify a key prefix for log objects."
     default     = "log/"
 }

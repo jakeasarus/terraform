@@ -18,6 +18,7 @@ resource "aws_s3_bucket" "b" {
         sse_algorithm     = var.sse_algorithm
       }
     }
+  }
 
     tags = var.tags
 }
