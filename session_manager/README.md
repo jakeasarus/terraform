@@ -18,7 +18,7 @@ No requirements.
 | description | The description of the all resources. | `string` | `"Managed by Terraform"` | no |
 | iam\_path | Path in which to create the IAM Role and the IAM Policy. | `string` | `"/"` | no |
 | iam\_policy | The policy document. This is a JSON formatted string. | `string` | `""` | no |
-| name | The name of the Session Manager. | `string` | `"thinkstack"` | no |
+| name | The name of the Session Manager. | `string` | `"session-manager"` | no |
 | s3\_bucket\_name | The name of the bucket. | `string` | `""` | no |
 | s3\_encryption\_enabled | Specify true to indicate that encryption for S3 Bucket enabled. | `bool` | `true` | no |
 | s3\_key\_prefix | The prefix for the specified S3 bucket. | `string` | `""` | no |
