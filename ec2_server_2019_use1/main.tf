@@ -5,7 +5,7 @@ resource "aws_instance" "example" {
     availability_zone = var.availability_zone
   
   lifecycle {
-    ignore_changes = ["ami"]
+    ignore_changes = [ami]
   }
 }
 
