@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "prod_website" {
-  bucket = var.bucket
+  bucket_prefix = var.bucket_prefix
   acl    = "public-read"
 
   website {
@@ -30,7 +30,7 @@ resource "aws_s3_bucket_policy" "prod_website" {
                 "s3:GetObject"
             ],
             "Resource": [
-                "arn:aws:s3:::${var.bucket}/*"
+                "arn:aws:s3:::${module.aws_s3_bucket.prod_website.id}/*"
             ]
         }
     ]
