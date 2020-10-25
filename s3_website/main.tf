@@ -30,7 +30,7 @@ resource "aws_s3_bucket_policy" "prod_website" {
                 "s3:GetObject"
             ],
             "Resource": [
-                "arn:aws:s3:::${module.aws_s3_bucket.prod_website.id}/*"
+                "arn:aws:s3:::${aws_s3_bucket.prod_website.id}/*"
             ]
         }
     ]
