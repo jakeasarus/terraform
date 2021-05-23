@@ -1,25 +1,25 @@
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
-  name              = "GameScore"
-  billing_mode = "PROVISIONED"
-  read_capacity      = 120
+  name           = "GameScore"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 120
   write_capacity = 10
   hash_key       = "UserId"
-  range_key    = "GameTitle"
+  range_key      = "GameTitle"
 
-
-  attribute   {
-    name =   "UserId"
-    type          = "S"
-  }
 
   attribute {
-    name   = "GameTitle"
+    name = "UserId"
     type = "S"
   }
 
   attribute {
-    name  = "TopScore"
-    type   = "N"
+    name = "GameTitle"
+    type = "S"
+  }
+
+  attribute {
+    name = "TopScore"
+    type = "N"
   }
 
   ttl {
@@ -43,7 +43,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   }
 
   tags = {
-    Name  = "dynamodb-table-1"
+    Name        = "dynamodb-table-1"
     Environment = "production"
   }
 }
