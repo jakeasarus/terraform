@@ -1,30 +1,30 @@
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
-  name = "GameScore"
-  billing_mode      = "PROVISIONED"
-  read_capacity    = 120
-  write_capacity    = 10
-  hash_key            = "UserId"
-  range_key  = "GameTitle"
+  name           = "GameScore"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 120
+  write_capacity = 10
+  hash_key       = "UserId"
+  range_key      = "GameTitle"
 
 
   attribute {
-    name    = "UserId"
-    type =                    "S"
-  }
-
-  attribute         {  
-    name         = "GameTitle"
-    type     = "S"
+    name = "UserId"
+    type = "S"
   }
 
   attribute {
-    name   = "TopScore"
-    type              = "N"
+    name = "GameTitle"
+    type = "S"
+  }
+
+  attribute {
+    name = "TopScore"
+    type = "N"
   }
 
   ttl {
-    attribute_name     = "TimeToExist"
-    enabled  = false
+    attribute_name = "TimeToExist"
+    enabled        = false
   }
 
   global_secondary_index {
@@ -43,7 +43,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   }
 
   tags = {
-    Name        =           "dynamodb-table-1"
-    Environment   = "production"
+    Name        = "dynamodb-table-1"
+    Environment = "production"
   }
 }
