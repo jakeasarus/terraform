@@ -87,7 +87,7 @@ jobs:
         # Arguments for the git add command
         add: '.'
         # The name of the user that will be displayed as the author of the commit
-        author_name: 'Jake Jones'
+        author_name: 'Siva'
         # The email of the user that will be displayed as the author of the commit
         author_email: # optional
         # Name of the branch to use, if different from the one that triggered the workflow
@@ -95,7 +95,7 @@ jobs:
         # The directory where your repository is located. You should use actions/checkout first to set it up
         cwd: # optional, default is .
         # The message for the commit
-        message: 'ran terraform fmt'
+        message: 'Updated by Terraform fmt'
         # Arguments for the git rm command
         remove: # optional
         # Whether to use the --signoff option on git commit
