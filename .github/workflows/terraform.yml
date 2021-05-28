@@ -77,7 +77,7 @@ jobs:
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
-      run: terraform fmt -check=true -list=true
+      run: terraform fmt -recursive
     
     - name: Add & Commit
       # You may pin to the exact commit or the version.
