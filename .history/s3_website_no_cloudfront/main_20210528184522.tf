@@ -1,6 +1,6 @@
 provider "aws" {
   version = "~> 2.0"
-  region        = var.region
+  region  = var.region
 }
 
 resource "aws_s3_bucket" "prod_website" {
@@ -8,17 +8,17 @@ resource "aws_s3_bucket" "prod_website" {
   acl    = "public-read"
 
   website {
-    index_document          = "index.html"
-    error_document    = "error.html"
+    index_document = "index.html"
+    error_document = "error.html"
 
   }
 }
 
 
 resource "aws_s3_bucket_policy" "prod_website" {
-  bucket        = aws_s3_bucket.prod_website.id
+  bucket = aws_s3_bucket.prod_website.id
 
-  policy      = <<POLICY
+  policy = <<POLICY
 {
     "Version": "2012-10-17",
     "Statement": [
