@@ -4,19 +4,19 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "prod_website" {
-  bucket_prefix = var.bucket_prefix
-  acl           = "public-read"
+  bucket_prefix     = var.bucket_prefix
+  acl    = "public-read"
 
   website {
-    index_document = "index.html"
-    error_document = "error.html"
+    index_document    = "index.html"
+    error_document      = "error.html"
 
   }
 }
 
 
 resource "aws_s3_bucket_policy" "prod_website" {
-  bucket = aws_s3_bucket.prod_website.id
+  bucket    = aws_s3_bucket.prod_website.id
 
   policy = <<POLICY
 {
@@ -44,8 +44,8 @@ locals {
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name = aws_s3_bucket.prod_website.bucket_regional_domain_name
-    origin_id   = local.s3_origin_id
+    domain_name = "${aws_s3_bucket.prod_website.bucket_regional_domain_name}"
+    origin_id   = "${local.s3_origin_id}"
 
     #   s3_origin_config {
     #     origin_access_identity = "origin-access-identity/cloudfront/ABCDEFG1234567"
@@ -68,7 +68,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = "${local.s3_origin_id}"
 
     forwarded_values {
       query_string = false
@@ -89,7 +89,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     path_pattern     = "/content/immutable/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = "${local.s3_origin_id}"
 
     forwarded_values {
       query_string = false
@@ -112,7 +112,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     path_pattern     = "/content/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = "${local.s3_origin_id}"
 
     forwarded_values {
       query_string = false

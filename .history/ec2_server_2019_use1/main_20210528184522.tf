@@ -1,9 +1,9 @@
 #AWS Instance
 resource "aws_instance" "example" {
-  ami               = data.aws_ami.windows.id
-  instance_type     = "t2.micro"
-  availability_zone = var.availability_zone
-
+    ami = data.aws_ami.windows.id
+    instance_type = "t2.micro"
+    availability_zone = var.availability_zone
+  
   lifecycle {
     ignore_changes = [ami]
   }
@@ -46,14 +46,14 @@ resource "aws_cloudwatch_metric_alarm" "ec2_cpu" {
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "2"
   metric_name               = "CPUUtilization"
-  namespace                 = "AWS/EC2"
+  namespace                 = "AWS/EC2" 
   period                    = "120" #seconds
   statistic                 = "Average"
-  threshold                 = "80"
+  threshold                 = "80" 
   alarm_description         = "This metric monitors ec2 cpu utilization"
   insufficient_data_actions = []
 
   dimensions = {
-    InstanceId = aws_instance.example.id
-  }
+        InstanceId = aws_instance.example.id
+      }
 }

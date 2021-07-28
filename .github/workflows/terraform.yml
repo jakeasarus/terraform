@@ -64,6 +64,11 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v2
+      
+    - name: Terraform security scan
+      uses: triat/terraform-security-scan@v2.2.3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
@@ -77,7 +82,7 @@ jobs:
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
-      run: terraform fmt
+      run: terraform fmt -recursive
     
     - name: Add & Commit
       # You may pin to the exact commit or the version.
