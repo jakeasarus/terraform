@@ -6,7 +6,6 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   hash_key       = "UserId"
   range_key      = "GameTitle"
 
-
   attribute {
     name = "UserId"
     type = "S"
@@ -18,7 +17,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   }
 
   attribute {
-    name = "TopScore"
+    name = "TopScore2"
     type = "N"
   }
 
